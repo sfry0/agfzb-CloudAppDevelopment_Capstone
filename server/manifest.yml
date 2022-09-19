@@ -1,11 +1,11 @@
   applications:
-  - name: djangoapp
+  - name: djangoapp-scf
     routes:
-      - route: $HOST.$DOMAIN
+      - route: scf.mybluemix.net
     memory: 128M
     buildpack: python_buildpack
-  - name: djangoapp-nginx
+  - name: djangoapp-nginx-scf
     routes:
-      - route: $HOST.$DOMAIN/static
+      - route: scf.mybluemix.net/static
     memory: 128M
     buildpack: staticfile_buildpack
