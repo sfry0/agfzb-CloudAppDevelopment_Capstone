@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,30 +14,16 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#" disabled >Dealership Review</a>
-            </div>
-        </div>
-    </nav>
-    <br>
-
-    <form action="{% url 'djangoapp:login' %}"  method="post">
+    <form action="{% url 'djangoapp:user_login' %}"  method="post">
         {% csrf_token %}
         <div class="container">
           <h1>Login</h1>
-          <hr>
           <label for="username"><b>User Name</b></label>
-          <br>
-          <input class="form-control" type="text" placeholder="Enter User Name: " name="username" required>
-          <br>
+          <input type="text" placeholder="Enter User Name: " name="username" required>
           <label for="psw"><b>Password</b></label>
-          <br>
-          <input class="form-control" type="password" placeholder="Enter Password: " name="psw" required>
-          <br>
+          <input type="password" placeholder="Enter Password: " name="psw" required>
           <div>
-            <button class="btn btn-primary" type="submit">Login</button>
+            <button class="button" type="submit">Login</button>
           </div>
         </div>
       </form>

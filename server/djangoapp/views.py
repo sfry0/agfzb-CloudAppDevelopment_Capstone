@@ -19,14 +19,16 @@ logger = logging.getLogger(__name__)
 
 def about(request):
     context = {}
-    return render(request, 'djangoapp/about.html', context)
+    if request.method == "GET":
+        return render(request, 'djangoapp/about.html', context)
 
 # Create a `contact` view to return a static contact page
 
 
 def contact(request):
     context = {}
-    return render(request, 'djangoapp/contact.html', context)
+    if request.method == "GET":
+        return render(request, 'djangoapp/contact.html', context)
 
 # Create a `login_request` view to handle sign in request
 
@@ -143,7 +145,6 @@ def add_review(request, id):
             payload["car_make"] = car.make.name
             payload["car_model"] = car.name
             payload["car_year"] = int(car.year.strftime("%Y"))
-
             new_payload = {}
             new_payload["review"] = payload
             review_post_url = "https://us-south.functions.appdomain.cloud/api/v1/web/skyefry0_djangoserver-space/dealership-package/post-review"
