@@ -9,6 +9,10 @@ from django.contrib import messages
 from datetime import datetime
 import logging
 import json
+from django.db import models
+from django.core import serializers
+from django.utils.timezone import now
+import uuid
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -123,7 +127,6 @@ def add_review(request, id):
         cars = CarModel.objects.all()
         print(cars)
         context["cars"] = cars
-
         return render(request, 'djangoapp/add_review.html', context)
     elif request.method == 'POST':
         if request.user.is_authenticated:

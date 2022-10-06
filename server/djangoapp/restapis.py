@@ -35,7 +35,7 @@ def get_dealers_from_cf(url, **kwargs):
             # Create a CarDealer object with values in `doc` object
             dealer_obj = CarDealer(address=dealer_doc["address"], city=dealer_doc["city"], full_name=dealer_doc["full_name"],
                                    id=dealer_doc["id"], lat=dealer_doc["lat"], long=dealer_doc["long"],
-                                   #short_name=dealer_doc["short_name"],
+                                   short_name=dealer_doc["short_name"],
                                    st=dealer_doc["st"], zip=dealer_doc["zip"])
             results.append(dealer_obj)
 
@@ -44,20 +44,20 @@ def get_dealers_from_cf(url, **kwargs):
 
 def get_dealer_by_id_from_cf(url, id):
     json_result = get_request(url, id=id)
+    print('json_result from line 54',json_result)
+
     if json_result:
-        dealer_doc = json_result["body"][0]
-        dealer_obj = CarDealer(
-            address=dealer_doc["address"],
-            city=dealer_doc["city"],
-            full_name=dealer_doc["full_name"],
-            id=dealer_doc["id"],
-            lat=dealer_doc["lat"],
-            long=dealer_doc["long"],
-            short_name=dealer_doc["short_name"],
-            st=dealer_doc["st"],
-            zip=dealer_doc["zip"]
-        )
-    return dealer_obj
+        dealers = json_result[0]
+
+        
+        # print("line 70 restapis",json_result)
+        dealer_doc = dealers
+        print("0th address element line 73",dealers["address"])
+        dealer_obj = CarDealer(address=dealers["address"], city=dealers["city"],
+                                id=dealers["id"], lat=dealers["lat"], long=dealers["long"], full_name=dealers["full_name"],
+                                
+                                short_name=dealers["short_name"],st=dealers["st"], zip=dealers["zip"])
+    return dealer_obj 
 
 
 def get_dealer_reviews_from_cf(url, **kwargs):
@@ -69,7 +69,7 @@ def get_dealer_reviews_from_cf(url, **kwargs):
         json_result = get_request(url)
     
     if json_result:
-        reviews = json_result["body"]["data"]["docs"]
+        reviews = json_result["data"]["docs"]
 
         for dealer_review in reviews:
 
