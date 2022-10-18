@@ -100,6 +100,7 @@ def get_dealerships(request):
 
 
 # Create a `get_dealer_details` view to render the reviews of a dealer
+
 def get_dealer_details(request, id):
     if request.method == "GET":
         context = {}
