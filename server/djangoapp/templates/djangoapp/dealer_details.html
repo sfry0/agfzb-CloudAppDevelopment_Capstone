@@ -18,8 +18,8 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="btn btn-primary" href="review">Add a Review!</a>
                     {% if user.is_authenticated %}
+                    <a class="btn btn-primary" href="review">Add a Review!</a>
                     <a class="btn btn-link" href="">{{ user.first_name }}({{ user.username }})</a>
                     <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
                 </li>
